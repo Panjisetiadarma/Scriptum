@@ -1,6 +1,4 @@
-package tubes;
-
-package com.perpustakaan.dao;
+package scriptum;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,3 +33,4 @@ public class DatabaseConnection {
         }
     }
 }
+

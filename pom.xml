@@ -5,8 +5,8 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>com.perpustakaan</groupId>
-    <artifactId>LibraryApp</artifactId>
+    <groupId>com.scriptum</groupId>
+    <artifactId>Scriptum</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
     
@@ -18,11 +18,20 @@
     
     <dependencies>
         <!-- Servlet API -->
+        <!-- Scope compile untuk development di IDE, bisa diubah ke provided saat production -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- JSP API -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.3</version>
+            <scope>compile</scope>
         </dependency>
         
         <!-- JSTL -->
@@ -38,18 +47,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
-        
-        <!-- JSP API -->
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.3</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
     
     <build>
-        <finalName>LibraryApp</finalName>
+        <sourceDirectory>src</sourceDirectory>
+        <finalName>Scriptum</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -58,19 +60,18 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.3</version>
                 <configuration>
-                    <url>http://localhost:8080/manager/text</url>
-                    <server>TomcatServer</server>
-                    <path>/LibraryApp</path>
+                    <warSourceDirectory>webapp</warSourceDirectory>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 </project>
+
